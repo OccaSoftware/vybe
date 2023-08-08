@@ -1,0 +1,17 @@
+{
+  "displayName": "Vybe",
+  "name": "com.occasoftware.vybe",
+  "version": "1.0.0",
+  "unity": "2022.3",
+  "description": "Fast sky shader for mobile devices.",
+  "author": {
+    "name": "OccaSoftware",
+    "email": "hello@occasoftware.com",
+    "url": "https://www.occasoftware.com/"
+  },
+  "documentationUrl": "https://docs.occasoftware.com/",
+  "unityRelease": "0f1",
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "14.0.7"
+  }
+}
