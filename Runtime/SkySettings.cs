@@ -11,22 +11,39 @@ namespace OccaSoftware.Vybe.Runtime
     public class SkySettings : MonoBehaviour
     {
         [Header("Colors")]
-        [ColorUsage(false, true)]
-        public Color horizonDay = new Color(0.76f, 0.77f, 0.82f);
+        [SerializeField, ColorUsage(false, true)]
+        private Color horizonDay = new Color(0.76f, 0.77f, 0.82f);
 
-        [ColorUsage(false, true)]
-        public Color skyDay = new Color(0.01f, 0.27f, 0.89f);
+        [SerializeField, ColorUsage(false, true)]
+        private Color skyDay = new Color(0.01f, 0.27f, 0.89f);
 
-        [ColorUsage(false, true)]
-        public Color horizonNight = new Color(0.52f, 0.35f, 0.53f);
+        [SerializeField, ColorUsage(false, true)]
+        private Color horizonNight = new Color(0.52f, 0.35f, 0.53f);
 
-        [ColorUsage(false, true)]
-        public Color skyNight = new Color(0.08f, 0.09f, 0.32f);
+        [SerializeField, ColorUsage(false, true)]
+        private Color skyNight = new Color(0.08f, 0.09f, 0.32f);
 
         [Header("Sun")]
-        [Range(0.9f, 1.0f)]
-        public float sunSize = 0.999f;
+        [SerializeField, Range(0.0f, 1.0f)]
+        private float sunSize = 0.05f;
 
+        [Header("Stars")]
+        [SerializeField, Min(0f)]
+        private float starBrightness = 1.0f;
+
+        private float shaderSunSize = 0.999f;
+
+        private void OnValidate()
+        {
+            SetSunSize(sunSize);
+        }
+
+        public void SetSunSize(float size)
+        {
+            shaderSunSize = 1.0f - Mathf.Clamp01(size) * 0.1f;
+        }
+
+        [Header("Static Properties")]
         [SerializeField]
         [Reload("Runtime/StarTexture.asset")]
         private Texture3D starTexture;
@@ -73,13 +90,13 @@ namespace OccaSoftware.Vybe.Runtime
             RenderSettings.ambientEquatorColor = horizon;
             RenderSettings.ambientGroundColor = Color.black;
             RenderSettings.ambientSkyColor = sky;
-            float starBrightness = Mathf.Lerp(0f, 10f, s);
+            float starBrightnessInShader = Mathf.Lerp(0f, 10f, s) * starBrightness;
 
             // Set
-            skyMaterial.SetFloat(Params._SUN_SIZE, sunSize);
+            skyMaterial.SetFloat(Params._SUN_SIZE, shaderSunSize);
             skyMaterial.SetColor(Params._HORIZON_COLOR, horizon);
             skyMaterial.SetColor(Params._SKY_COLOR, sky);
-            skyMaterial.SetFloat(Params._STAR_BRIGHTNESS, starBrightness);
+            skyMaterial.SetFloat(Params._STAR_BRIGHTNESS, starBrightnessInShader);
             skyMaterial.SetTexture(Params._STAR_TEXTURE, starTexture);
         }
 

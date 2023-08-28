@@ -75,8 +75,9 @@ Shader "OccaSoftware/Vybe"
                 float3 skyColor = lerp(_HORIZON_COLOR, _SKY_COLOR, saturate(uv.y));
 
                 // Stars
-                float stars = _STAR_TEXTURE.Sample(linear_repeat_sampler, positionOS * 25.0).r;
-                stars = pow(stars, 10.0) * _STAR_BRIGHTNESS;
+                float stars = _STAR_TEXTURE.Sample(linear_repeat_sampler, positionOS * 15.0).r;
+                float starNoise = _STAR_TEXTURE.Sample(linear_repeat_sampler, positionOS * 17.0 + float3(0,_Time.y,0)).r;
+                stars = pow(stars, 14.0) * _STAR_BRIGHTNESS * starNoise;
                 return skyColor + sun + stars;
             }
             ENDHLSL
