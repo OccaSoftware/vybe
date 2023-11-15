@@ -1,9 +1,8 @@
-# README
+# Vybe
 
 ![Discord](https://img.shields.io/discord/999031026204553316?logo=discord&label=discord)
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/occasoftware/com.occasoftware.vybe)
-
 
 
 ## Contents
