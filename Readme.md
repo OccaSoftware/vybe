@@ -1,7 +1,8 @@
 # README
 
-![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FOccaSoftware%2Fcom.occasoftware.vybe%2Fraw%2Fmain%2Fpackage.json&query=%24.unity&label=Unity%20Version)
+![Discord](https://img.shields.io/discord/999031026204553316?logo=discord&label=discord)
 
+![GitHub release (with filter)](https://img.shields.io/github/v/release/occasoftware/com.occasoftware.vybe)
 
 
 
