@@ -2,7 +2,6 @@
 
 ![Discord](https://img.shields.io/discord/999031026204553316?logo=discord&label=discord)
 
-![GitHub release (with filter)](https://img.shields.io/github/v/release/occasoftware/com.occasoftware.vybe)
 [![GitHub Release](https://img.shields.io/github/release/occasoftware/com.occasoftware.vybe?logo=github)](https://github.com/occasoftware/com.occasoftware.vybe/releases/latest)
 
 ## Contents
